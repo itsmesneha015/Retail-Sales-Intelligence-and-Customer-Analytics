@@ -24,7 +24,7 @@ from reportlab.pdfbase.ttfonts import TTFont
 # Windows: use Nirmala UI when available.
 # Streamlit Cloud (Linux): fall back to DejaVu Sans.
 font_candidates = [
-    (PDF_FONT_NAME, r"C:\Windows\Fonts\Nirmala.ttc"),
+    ("Nirmala", r"C:\Windows\Fonts\Nirmala.ttc"),
     ("DejaVuSans", "/usr/share/fonts/truetype/dejavu/DejaVuSans.ttf"),
 ]
 
