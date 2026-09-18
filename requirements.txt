@@ -9,3 +9,4 @@ openpyxl
 streamlit-mic-recorder
 gTTS
 sentence-transformers
+reportlab
