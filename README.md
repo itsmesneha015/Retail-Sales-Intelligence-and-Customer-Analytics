@@ -5,8 +5,7 @@ An AI-powered retail analytics system that combines sales analysis, machine lear
 ## 🚀 Live Demo
 
 Streamlit App:
-
-https://retail-sales-intelligence-and-customer-analytics-v87fmjgas7d6.streamlit.app/
+https://retail-sales-intelligence-and-customer-analytics-y87fmfjgas7d6.streamlit.app/
 
 ## 📌 Project Overview
 
