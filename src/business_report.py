@@ -1,7 +1,6 @@
 from reportlab.lib.styles import getSampleStyleSheet
 from reportlab.lib.enums import TA_CENTER
-from reportlab.pdfbase import pdfmetrics
-from reportlab.pdfbase.ttfonts import TTFont
+
 from reportlab.lib.pagesizes import A4
 from reportlab.platypus import (
     SimpleDocTemplate,
@@ -13,18 +12,32 @@ from reportlab.platypus import (
 from reportlab.lib import colors
 import pandas as pd
 import sys
+import os
+from reportlab.pdfbase import pdfmetrics
+from reportlab.pdfbase.ttfonts import TTFont
 
 
 # =================================
-# Register Unicode Font
+# Register Cross-Platform Unicode Font
 # =================================
 
-pdfmetrics.registerFont(
-    TTFont(
-        "Nirmala",
-        "C:\\Windows\\Fonts\\Nirmala.ttc"
-    )
-)
+# Windows: use Nirmala UI when available.
+# Streamlit Cloud (Linux): fall back to DejaVu Sans.
+font_candidates = [
+    (PDF_FONT_NAME, r"C:\Windows\Fonts\Nirmala.ttc"),
+    ("DejaVuSans", "/usr/share/fonts/truetype/dejavu/DejaVuSans.ttf"),
+]
+
+PDF_FONT_NAME = "Helvetica"
+
+for _font_name, _font_path in font_candidates:
+    if os.path.exists(_font_path):
+        try:
+            pdfmetrics.registerFont(TTFont(_font_name, _font_path))
+            PDF_FONT_NAME = _font_name
+            break
+        except Exception:
+            pass
 
 
 # =================================
@@ -437,15 +450,15 @@ styles = getSampleStyleSheet()
 
 title_style = styles["Title"]
 title_style.alignment = TA_CENTER
-title_style.fontName = "Nirmala"
+title_style.fontName = PDF_FONT_NAME
 
 
 heading_style = styles["Heading2"]
-heading_style.fontName = "Nirmala"
+heading_style.fontName = PDF_FONT_NAME
 
 
 normal_style = styles["BodyText"]
-normal_style.fontName = "Nirmala"
+normal_style.fontName = PDF_FONT_NAME
 
 
 # =================================
@@ -534,7 +547,7 @@ sales_table.setStyle(
             "FONTNAME",
             (0, 0),
             (-1, -1),
-            "Nirmala"
+            PDF_FONT_NAME
         ),
         (
             "PADDING",
@@ -611,7 +624,7 @@ seasonal_table.setStyle(
             "FONTNAME",
             (0, 0),
             (-1, -1),
-            "Nirmala"
+            PDF_FONT_NAME
         ),
         (
             "PADDING",
@@ -699,7 +712,7 @@ customer_table.setStyle(
             "FONTNAME",
             (0, 0),
             (-1, -1),
-            "Nirmala"
+            PDF_FONT_NAME
         ),
         (
             "PADDING",
@@ -770,7 +783,7 @@ zone_table.setStyle(
             "FONTNAME",
             (0, 0),
             (-1, -1),
-            "Nirmala"
+            PDF_FONT_NAME
         ),
         (
             "PADDING",
