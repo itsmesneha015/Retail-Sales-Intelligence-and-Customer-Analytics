@@ -1,0 +1,16 @@
+Year,Season,Category,Predicted_Quantity
+2018,Winter,Furniture,574
+2018,Winter,Office Supplies,1431
+2018,Winter,Technology,534
+2018,Spring,Furniture,433
+2018,Spring,Office Supplies,1154
+2018,Spring,Technology,395
+2018,Summer,Furniture,452
+2018,Summer,Office Supplies,1283
+2018,Summer,Technology,427
+2018,Monsoon,Furniture,593
+2018,Monsoon,Office Supplies,1673
+2018,Monsoon,Technology,563
+2018,Autumn,Furniture,597
+2018,Autumn,Office Supplies,1563
+2018,Autumn,Technology,572
